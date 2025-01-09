@@ -34,16 +34,17 @@ echo "Visita 2: " . PHP_EOL;
 echo printChaveValor($visitas[1]) . PHP_EOL;
 
 
-function abaterEstoque($visitas, $estoque)
+function abaterEstoque($visitas, &$estoque)
 {
-    foreach ($visitas as $key => $value) {
-        if (isset($estoque[$key])) {
-            $estoque[$key] -= $value;
+    foreach ($visitas as $visita) {
+        foreach ($visita as $key => $value) {
+            if (isset($estoque[$key])) {
+                $estoque[$key] -= $value;
+            }
         }
     }
 }
 
 abaterEstoque($visitas, $estoque);
 echo "--- Atualização De Estoque ---" . PHP_EOL;
-print_r($estoque);
-echo printChaveValor($estoque) . PHP_EOL;
+printChaveValor($estoque) . PHP_EOL;
