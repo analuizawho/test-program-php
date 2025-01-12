@@ -41,6 +41,9 @@ function abaterEstoque($visitas, &$estoque)
             if (isset($estoque[$key])) {
                 $estoque[$key] -= $value;
             }
+            if (($estoque[$key]) <= 0) {
+                $estoque[$key] = 0;
+            }
         }
     }
 }
